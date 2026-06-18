@@ -3,24 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ficha de entrenamiento</title>
+<meta name="robots" content="noindex, nofollow">
+<title>Xavi Lucas · Sesión 5</title>
 <style>
   :root{
-    --ink:#181B20;
-    --ink-soft:#636B76;
-    --ink-faint:#97A0AB;
+    --ink:#15171C;
+    --ink-2:#5A6270;
+    --ink-3:#929BA8;
     --paper:#EEF0F3;
     --card:#FFFFFF;
-    --border:#E2E5EA;
-    --accent:#D6431F;
-    --accent-dark:#B83515;
+    --line:#E4E6EB;
+    --accent:#E0481F;
+    --accent-d:#C13A14;
+    --hero:#181B21;
 
-    --p1-tint:#FCF0D9; --p1-text:#8A5C08; --p1-line:#E0A53A;
-    --p2-tint:#DDEAFE; --p2-text:#1D4FD1; --p2-line:#4C82E8;
-    --p3-tint:#DCF3E7; --p3-text:#0F7A4E; --p3-line:#2FAE76;
-    --p4-tint:#ECE6FB; --p4-text:#5732B8; --p4-line:#8B6CE0;
-    --p5-tint:#D7F3F3; --p5-text:#0E7C86; --p5-line:#34AEB8;
-    --p6-tint:#FBE3EA; --p6-text:#B23368; --p6-line:#DD6F97;
+    --b1-bg:#E29A2E; --b1-tint:#FAF0DB; --b1-tx:#875708;
+    --b2-bg:#4C82E8; --b2-tint:#E2EAFD; --b2-tx:#1D4FD1;
+    --b3-bg:#2FAE76; --b3-tint:#DDF3E8; --b3-tx:#0F7A4E;
+    --b4-bg:#8B6CE0; --b4-tint:#EBE6FB; --b4-tx:#5732B8;
+    --b5-bg:#34AEB8; --b5-tint:#D9F2F3; --b5-tx:#0E7C86;
+    --b6-bg:#DD6F97; --b6-tint:#FBE4EC; --b6-tx:#B23368;
   }
 
   *{box-sizing:border-box;}
@@ -30,75 +32,85 @@
     color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
     font-size:15px;
     line-height:1.45;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
   }
 
-  .icon{width:1em;height:1em;display:inline-block;vertical-align:-0.15em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .icon{width:1em;height:1em;display:inline-block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  a:focus-visible,.video:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
-  a{color:inherit;}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .wrap{max-width:620px;margin:0 auto;padding:18px 14px 44px;}
 
-  .page{max-width:600px;margin:0 auto;padding:18px 14px 40px;}
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--hero);color:#fff;border-radius:18px;padding:24px 22px 22px;}
+  .hero::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--accent);}
+  .hero-eyebrow{margin:0 0 9px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+  .hero-name{margin:0;font-size:28px;font-weight:800;letter-spacing:-0.02em;line-height:1.05;}
+  .hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:12px;font-size:13px;color:rgba(255,255,255,.66);}
+  .hero-session{background:var(--accent);color:#fff;font-weight:700;font-size:12px;letter-spacing:.02em;padding:4px 11px;border-radius:20px;}
+  .dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.4);}
+  .hero-goal{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.13);}
+  .hero-goal-k{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px;}
+  .hero-goal-k .icon{color:var(--accent);}
+  .hero-goal p{margin:0;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.9);}
 
-  .ficha-header{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 18px 16px;margin-bottom:22px;}
-  .eyebrow{margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);}
-  .client-name{margin:0;font-size:22px;font-weight:800;letter-spacing:-0.01em;}
-  .session-name{margin:3px 0 14px;font-size:15px;font-weight:600;color:var(--accent-dark);}
-  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:14px;border-top:1px solid var(--border);}
-  .info-row{min-width:0;}
-  .info-row.full{grid-column:1 / -1;}
-  .info-label{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px;}
-  .info-value{font-size:14px;color:var(--ink);font-weight:500;}
+  /* ---------- META CARDS ---------- */
+  .strip{display:flex;gap:11px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;margin-top:13px;}
+  .strip .icon{flex-shrink:0;width:18px;height:18px;color:var(--ink-3);margin-top:1px;}
+  .strip-k{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px;}
+  .strip-v{font-size:13.5px;color:var(--ink-2);line-height:1.45;}
 
-  .session-note{display:flex;gap:7px;align-items:flex-start;font-size:13px;font-style:italic;line-height:1.4;color:var(--ink-soft);background:var(--paper);border-radius:9px;padding:9px 12px;margin-top:14px;}
-  .session-note .icon{flex-shrink:0;margin-top:2px;color:var(--ink-faint);}
+  .banner{display:flex;gap:10px;align-items:flex-start;background:#FFF6F1;border:1px solid #F2D7C9;color:#8A4A2E;border-radius:12px;padding:12px 14px;margin:13px 0 28px;font-size:13.5px;line-height:1.45;}
+  .banner .icon{flex-shrink:0;width:17px;height:17px;margin-top:1px;}
 
-  .block{margin-bottom:26px;}
+  /* ---------- BLOCKS ---------- */
+  .block{margin-bottom:30px;}
   .block:last-child{margin-bottom:0;}
-  .block-title{display:inline-flex;align-items:center;gap:6px;margin:0 0 10px;padding:6px 12px;border-radius:8px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
-  .block-note{display:flex;gap:7px;align-items:flex-start;font-size:13px;font-style:italic;line-height:1.4;border-radius:9px;padding:9px 12px;margin:0 0 10px;}
-  .block-note .icon{flex-shrink:0;margin-top:2px;}
+  .block-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .block-num{flex-shrink:0;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;font-variant-numeric:tabular-nums;}
+  .block-title{margin:0;font-size:16.5px;font-weight:800;letter-spacing:-0.015em;line-height:1.18;}
+  .block-note{display:flex;gap:9px;align-items:flex-start;border-radius:11px;padding:11px 13px;margin-bottom:13px;font-size:13px;line-height:1.45;}
+  .block-note .icon{flex-shrink:0;width:16px;height:16px;margin-top:1px;}
 
-  .block-p1 .block-title, .block-p1 .block-note{background:var(--p1-tint);color:var(--p1-text);}
-  .block-p2 .block-title, .block-p2 .block-note{background:var(--p2-tint);color:var(--p2-text);}
-  .block-p3 .block-title, .block-p3 .block-note{background:var(--p3-tint);color:var(--p3-text);}
-  .block-p4 .block-title, .block-p4 .block-note{background:var(--p4-tint);color:var(--p4-text);}
-  .block-p5 .block-title, .block-p5 .block-note{background:var(--p5-tint);color:var(--p5-text);}
-  .block-p6 .block-title, .block-p6 .block-note{background:var(--p6-tint);color:var(--p6-text);}
-  .block-p1 .exercise{border-left-color:var(--p1-line);}
-  .block-p2 .exercise{border-left-color:var(--p2-line);}
-  .block-p3 .exercise{border-left-color:var(--p3-line);}
-  .block-p4 .exercise{border-left-color:var(--p4-line);}
-  .block-p5 .exercise{border-left-color:var(--p5-line);}
-  .block-p6 .exercise{border-left-color:var(--p6-line);}
+  .b1 .block-num{background:var(--b1-bg);} .b1 .ex::before{background:var(--b1-bg);} .b1 .block-note{background:var(--b1-tint);color:var(--b1-tx);}
+  .b2 .block-num{background:var(--b2-bg);} .b2 .ex::before{background:var(--b2-bg);} .b2 .block-note{background:var(--b2-tint);color:var(--b2-tx);}
+  .b3 .block-num{background:var(--b3-bg);} .b3 .ex::before{background:var(--b3-bg);} .b3 .block-note{background:var(--b3-tint);color:var(--b3-tx);}
+  .b4 .block-num{background:var(--b4-bg);} .b4 .ex::before{background:var(--b4-bg);} .b4 .block-note{background:var(--b4-tint);color:var(--b4-tx);}
+  .b5 .block-num{background:var(--b5-bg);} .b5 .ex::before{background:var(--b5-bg);} .b5 .block-note{background:var(--b5-tint);color:var(--b5-tx);}
+  .b6 .block-num{background:var(--b6-bg);} .b6 .ex::before{background:var(--b6-bg);} .b6 .block-note{background:var(--b6-tint);color:var(--b6-tx);}
 
-  .exercise-list{display:flex;flex-direction:column;gap:10px;}
+  /* ---------- EXERCISES ---------- */
+  .ex-list{display:flex;flex-direction:column;gap:11px;}
+  .ex{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 14px 18px;box-shadow:0 1px 2px rgba(20,23,28,.05),0 4px 12px rgba(20,23,28,.03);}
+  .ex::before{content:"";position:absolute;top:0;left:0;bottom:0;width:4px;}
+  .ex-head{display:flex;gap:13px;align-items:center;}
+  .ex-img{width:78px;height:78px;flex-shrink:0;border-radius:11px;object-fit:cover;border:1px solid var(--line);background:var(--paper);}
+  .ex-info{flex:1;min-width:0;}
+  .ex-name{margin:0 0 9px;font-size:15px;font-weight:700;line-height:1.25;}
+  .video{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;text-decoration:none;padding:6px 12px;border-radius:9px;line-height:1;}
+  .video:hover{background:var(--accent-d);}
+  .video .icon{width:13px;height:13px;}
 
-  .exercise{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--border);border-radius:12px;padding:12px 14px;}
-  .exercise-top{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
-  .exercise-img{width:56px;height:56px;flex-shrink:0;border-radius:9px;object-fit:cover;border:1px solid var(--border);background:var(--paper);}
-  .exercise-main{flex:1;min-width:0;}
-  .exercise-name{margin:0 0 6px;font-size:15px;font-weight:700;line-height:1.25;}
-  .video-btn{display:inline-flex;align-items:center;gap:5px;background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;text-decoration:none;padding:5px 11px 5px 9px;border-radius:20px;line-height:1;}
-  .video-btn .icon{width:.85em;height:.85em;}
-  .video-btn:hover{background:var(--accent-dark);}
+  .stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px;}
+  .stat{display:inline-flex;align-items:baseline;gap:7px;background:var(--paper);border-radius:9px;padding:7px 12px;}
+  .stat-k{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);}
+  .stat-v{font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);}
 
-  .metrics{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--paper);border-radius:9px;overflow:hidden;}
-  .metric{text-align:center;padding:7px 4px;border-right:1px solid var(--border);}
-  .metric:last-child{border-right:none;}
-  .metric-label{display:block;font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px;}
-  .metric-value{display:block;font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--ink);}
+  .ex-note{display:flex;gap:8px;align-items:flex-start;margin:12px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-2);line-height:1.45;}
+  .ex-note .icon{flex-shrink:0;width:14px;height:14px;margin-top:2px;color:var(--ink-3);}
 
-  .notes{display:flex;gap:6px;align-items:flex-start;margin-top:9px;padding-top:9px;border-top:1px solid var(--border);font-size:12.5px;font-style:italic;color:var(--ink-soft);}
-  .notes .icon{flex-shrink:0;margin-top:2px;color:var(--ink-faint);}
-
-  @media (min-width:700px){
-    .page{padding:32px 16px 56px;}
-    .ficha-header{padding:24px 26px 22px;}
-    .client-name{font-size:25px;}
-    .exercise{padding:14px 16px;}
-    .exercise-img{width:64px;height:64px;}
+  @media (min-width:680px){
+    .wrap{padding:30px 16px 56px;}
+    .hero{padding:30px 30px 26px;}
+    .hero-name{font-size:33px;}
+    .ex-img{width:88px;height:88px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .ex,.hero,.block{break-inside:avoid;}
   }
 </style>
 </head>
@@ -106,8 +118,6 @@
 
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 <defs>
-  <symbol id="ic-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></symbol>
-  <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.3"/><line x1="12" y1="7.3" x2="12" y2="12"/><line x1="12" y1="12" x2="15.3" y2="14"/></symbol>
   <symbol id="ic-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.3"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r="1"/></symbol>
   <symbol id="ic-toolbox" viewBox="0 0 24 24"><rect x="3" y="9.5" width="18" height="9.5" rx="1.5"/><path d="M8.2 9.5V7a2 2 0 012-2h3.6a2 2 0 012 2v2.5"/><line x1="3" y1="13.7" x2="21" y2="13.7"/></symbol>
   <symbol id="ic-play" viewBox="0 0 24 24"><path d="M9.5 8.3v7.4a.8.8 0 001.2.7l6-3.7a.8.8 0 000-1.4l-6-3.7a.8.8 0 00-1.2.7z" fill="currentColor" stroke="none"/></symbol>
@@ -115,426 +125,450 @@
 </defs>
 </svg>
 
-<div class="page">
-  <header class="ficha-header">
-    <p class="eyebrow">Ficha de entrenamiento</p>
-    <h1 class="client-name">Xavi Lucas</h1>
-    <p class="session-name">Sesión 5</p>
-    <div class="info-grid">
-      <div class="info-row">
-        <div class="info-label"><svg class="icon"><use href="#ic-calendar"/></svg> Semana / fecha</div>
-        <div class="info-value">5</div>
-      </div>
-      <div class="info-row">
-        <div class="info-label"><svg class="icon"><use href="#ic-clock"/></svg> Duración</div>
-        <div class="info-value">45</div>
-      </div>
-      <div class="info-row full">
-        <div class="info-label"><svg class="icon"><use href="#ic-target"/></svg> Objetivo</div>
-        <div class="info-value">Seguir construyendo una base de movilidad, control lumbar y fuerza general para proteger la zona lumbar, mejorar la postura y ganar confianza en el movimiento sin dolor</div>
-      </div>
-      <div class="info-row full">
-        <div class="info-label"><svg class="icon"><use href="#ic-toolbox"/></svg> Material necesario</div>
-        <div class="info-value">Esterilla, discos y mancuernas, goma (resistencia baja), miniband para ejercicios de cadera y tobillo, banco y máquina de jalón polea</div>
-      </div>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="hero-eyebrow">Ficha de entrenamiento</p>
+    <h1 class="hero-name">Xavi Lucas</h1>
+    <div class="hero-meta">
+      <span class="hero-session">Sesión 5</span>
+      <span class="dot"></span><span>Semana 5</span>
+      <span class="dot"></span><span>45 min</span>
     </div>
-    <p class="session-note"><svg class="icon"><use href="#ic-note"/></svg> Realiza los ejercicios del bloque en orden, las series que toquen y pasa al siguiente</p>
+    <div class="hero-goal">
+      <div class="hero-goal-k"><svg class="icon"><use href="#ic-target"/></svg> Objetivo</div>
+      <p>Seguir construyendo una base de movilidad, control lumbar y fuerza general para proteger la zona lumbar, mejorar la postura y ganar confianza en el movimiento sin dolor.</p>
+    </div>
   </header>
 
-  <section class="block block-p1">
-    <h2 class="block-title">Activación y movilidad</h2>
-    
-    <div class="exercise-list">
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/CYSZUlcTmiM/hqdefault.jpg" alt="Movilidad escalupar" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Movilidad escalupar</p>
-            <a class="video-btn" href="https://www.youtube.com/shorts/CYSZUlcTmiM" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+  <div class="strip">
+    <svg class="icon"><use href="#ic-toolbox"/></svg>
+    <div>
+      <div class="strip-k">Material necesario</div>
+      <div class="strip-v">Esterilla, discos y mancuernas, goma (resistencia baja), miniband para ejercicios de cadera y tobillo, banco y máquina de jalón polea.</div>
+    </div>
+  </div>
+
+  <div class="banner">
+    <svg class="icon"><use href="#ic-note"/></svg>
+    <span>Realiza los ejercicios del bloque en orden, las series que toquen y pasa al siguiente.</span>
+  </div>
+
+  <!-- BLOQUE 1 -->
+  <section class="block b1">
+    <div class="block-head">
+      <span class="block-num">01</span>
+      <h2 class="block-title">Activación y movilidad</h2>
+    </div>
+    <div class="ex-list">
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/CYSZUlcTmiM/hqdefault.jpg" alt="Movilidad escapular">
+          <div class="ex-info">
+            <h3 class="ex-name">Movilidad escapular</h3>
+            <a class="video" href="https://www.youtube.com/shorts/CYSZUlcTmiM" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">1</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">6</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">1</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">6</span></span>
         </div>
-        <div class="notes"><svg class="icon"><use href="#ic-note"/></svg> Brazos lo más pegados a la pared que puedas</div>
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/TmBzoiAh4Vs/hqdefault.jpg" alt="Rotación de tronco" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Rotación de tronco</p>
-            <a class="video-btn" href="https://www.youtube.com/shorts/TmBzoiAh4Vs" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+        <p class="ex-note"><svg class="icon"><use href="#ic-note"/></svg> Brazos lo más pegados a la pared que puedas.</p>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/TmBzoiAh4Vs/hqdefault.jpg" alt="Rotación de tronco">
+          <div class="ex-info">
+            <h3 class="ex-name">Rotación de tronco</h3>
+            <a class="video" href="https://www.youtube.com/shorts/TmBzoiAh4Vs" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">1</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">6/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">1</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">6/lado</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/3TF3q7LWCUU/hqdefault.jpg" alt="Cat - camel" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Cat - camel</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=3TF3q7LWCUU" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/3TF3q7LWCUU/hqdefault.jpg" alt="Cat - camel">
+          <div class="ex-info">
+            <h3 class="ex-name">Cat - camel</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=3TF3q7LWCUU" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">1</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">8</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">1</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">8</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/moVodyWtFEM/hqdefault.jpg" alt="Círculos cadera en cuadripedia" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Círculos cadera en cuadripedia</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=moVodyWtFEM&amp;t=7s" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/moVodyWtFEM/hqdefault.jpg" alt="Círculos cadera en cuadripedia">
+          <div class="ex-info">
+            <h3 class="ex-name">Círculos cadera en cuadripedia</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=moVodyWtFEM&amp;t=7s" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">1</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">4/lado (hacia fuera y hacia dentro)</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">1</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">4/lado (fuera y dentro)</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/1PWInvioiXY/hqdefault.jpg" alt="Bisagra cadera, movilidad isquio/psoas" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Bisagra cadera, movilidad isquio/psoas</p>
-            <a class="video-btn" href="https://www.youtube.com/shorts/1PWInvioiXY" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/1PWInvioiXY/hqdefault.jpg" alt="Bisagra cadera, movilidad isquio/psoas">
+          <div class="ex-info">
+            <h3 class="ex-name">Bisagra cadera, movilidad isquio/psoas</h3>
+            <a class="video" href="https://www.youtube.com/shorts/1PWInvioiXY" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">1</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">6/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">1</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">6/lado</span></span>
         </div>
-        <div class="notes"><svg class="icon"><use href="#ic-note"/></svg> Tronco estable/recto</div>
-      </div>
+        <p class="ex-note"><svg class="icon"><use href="#ic-note"/></svg> Tronco estable / recto.</p>
+      </article>
+
     </div>
   </section>
 
-  <section class="block block-p2">
-    <h2 class="block-title">Activación consciente de faja abdominal</h2>
-    
-    <div class="exercise-list">
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/pD0ECeS_frM/hqdefault.jpg" alt="Técnica bracing controlada" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Técnica bracing controlada</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=pD0ECeS_frM" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+  <!-- BLOQUE 2 -->
+  <section class="block b2">
+    <div class="block-head">
+      <span class="block-num">02</span>
+      <h2 class="block-title">Activación consciente de faja abdominal</h2>
+    </div>
+    <div class="ex-list">
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/pD0ECeS_frM/hqdefault.jpg" alt="Técnica bracing controlada">
+          <div class="ex-info">
+            <h3 class="ex-name">Técnica bracing controlada</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=pD0ECeS_frM" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">4 de 8&#x27;&#x27;</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">4 de 8&#x27;&#x27;</span></span>
         </div>
-        <div class="notes"><svg class="icon"><use href="#ic-note"/></svg> Control de respiración</div>
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/OtVZqVNkUkY/hqdefault.jpg" alt="Deadbug isométrico unilateral" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Deadbug isométrico unilateral</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=OtVZqVNkUkY" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+        <p class="ex-note"><svg class="icon"><use href="#ic-note"/></svg> Control de respiración.</p>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/OtVZqVNkUkY/hqdefault.jpg" alt="Deadbug isométrico unilateral">
+          <div class="ex-info">
+            <h3 class="ex-name">Deadbug isométrico unilateral</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=OtVZqVNkUkY" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">4/lado 8&#x27;&#x27;</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">4/lado 8&#x27;&#x27;</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/PhxGqqbHqIg/hqdefault.jpg" alt="Bird dog isométrico controlado" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Bird dog isométrico controlado</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=PhxGqqbHqIg" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/PhxGqqbHqIg/hqdefault.jpg" alt="Bird dog isométrico controlado">
+          <div class="ex-info">
+            <h3 class="ex-name">Bird dog isométrico controlado</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=PhxGqqbHqIg" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">8 alternando lado (4&#x27;&#x27;)</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">8 alternando lado (4&#x27;&#x27;)</span></span>
         </div>
-        <div class="notes"><svg class="icon"><use href="#ic-note"/></svg> Contraer bien glúteo y abdomen, no forzar postura y si hay dolor parar</div>
-      </div>
+        <p class="ex-note"><svg class="icon"><use href="#ic-note"/></svg> Contraer bien glúteo y abdomen, no forzar postura y si hay dolor parar.</p>
+      </article>
+
     </div>
   </section>
 
-  <section class="block block-p3">
-    <h2 class="block-title">Estabilidad progresiva, CORE funcional</h2>
-    
-    <div class="exercise-list">
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/5pdWy6pY2uo/hqdefault.jpg" alt="Plancha frontal mano a hombro" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Plancha frontal mano a hombro</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=5pdWy6pY2uo&amp;t=5s" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+  <!-- BLOQUE 3 -->
+  <section class="block b3">
+    <div class="block-head">
+      <span class="block-num">03</span>
+      <h2 class="block-title">Estabilidad progresiva, CORE funcional</h2>
+    </div>
+    <div class="ex-list">
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/5pdWy6pY2uo/hqdefault.jpg" alt="Plancha frontal mano a hombro">
+          <div class="ex-info">
+            <h3 class="ex-name">Plancha frontal mano a hombro</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=5pdWy6pY2uo&amp;t=5s" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">20&#x27;&#x27;-30&#x27;&#x27;</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">20&#x27;&#x27;-30&#x27;&#x27;</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/b5joCNZDeaE/hqdefault.jpg" alt="Plancha lateral con inclinaciones laterales" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Plancha lateral con inclinaciones laterales</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=b5joCNZDeaE&amp;t=10s" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/b5joCNZDeaE/hqdefault.jpg" alt="Plancha lateral con inclinaciones laterales">
+          <div class="ex-info">
+            <h3 class="ex-name">Plancha lateral con inclinaciones laterales</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=b5joCNZDeaE&amp;t=10s" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">10&#x27;&#x27; mantengo posición y 10&#x27;&#x27; subo y bajo</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">10&#x27;&#x27; mantengo posición y 10&#x27;&#x27; subo y bajo</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/8qZsgjDubCc/hqdefault.jpg" alt="Pallof con desplazamiento lateral" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Pallof con desplazamiento lateral</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=8qZsgjDubCc" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/8qZsgjDubCc/hqdefault.jpg" alt="Pallof con desplazamiento lateral">
+          <div class="ex-info">
+            <h3 class="ex-name">Pallof con desplazamiento lateral</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=8qZsgjDubCc" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">20&#x27;&#x27;/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">20&#x27;&#x27;/lado</span></span>
         </div>
-        <div class="notes"><svg class="icon"><use href="#ic-note"/></svg> Que mantengas tensión en la goma y evites rotación de tronco hacia dentro</div>
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/iAWKyMczcrs/hqdefault.jpg" alt="Pallof press con rotacion controlada" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Pallof press con rotacion controlada</p>
-            <a class="video-btn" href="https://www.youtube.com/shorts/iAWKyMczcrs" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+        <p class="ex-note"><svg class="icon"><use href="#ic-note"/></svg> Mantén tensión en la goma y evita rotación de tronco hacia dentro.</p>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/iAWKyMczcrs/hqdefault.jpg" alt="Pallof press con rotación controlada">
+          <div class="ex-info">
+            <h3 class="ex-name">Pallof press con rotación controlada</h3>
+            <a class="video" href="https://www.youtube.com/shorts/iAWKyMczcrs" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">8/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">8/lado</span></span>
         </div>
-        
-      </div>
+      </article>
+
     </div>
   </section>
 
-  <section class="block block-p4">
-    <h2 class="block-title">Cadera</h2>
-    
-    <div class="exercise-list">
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/XJd5K8KmjeA/hqdefault.jpg" alt="Abduciones de cadera con miniband" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Abduciones de cadera con miniband</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=XJd5K8KmjeA&amp;t=8s" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+  <!-- BLOQUE 4 -->
+  <section class="block b4">
+    <div class="block-head">
+      <span class="block-num">04</span>
+      <h2 class="block-title">Cadera</h2>
+    </div>
+    <div class="ex-list">
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/XJd5K8KmjeA/hqdefault.jpg" alt="Abducciones de cadera con miniband">
+          <div class="ex-info">
+            <h3 class="ex-name">Abducciones de cadera con miniband</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=XJd5K8KmjeA&amp;t=8s" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">8/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">8/lado</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/3kdnfzl9mCE/hqdefault.jpg" alt="Rotación externa (miniband clam)" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Rotación externa (miniband clam)</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=3kdnfzl9mCE" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/3kdnfzl9mCE/hqdefault.jpg" alt="Rotación externa (miniband clam)">
+          <div class="ex-info">
+            <h3 class="ex-name">Rotación externa (miniband clam)</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=3kdnfzl9mCE" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">10/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">10/lado</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/ocA7n8rS9R0/hqdefault.jpg" alt="Flexión de cadera con goma arriba" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Flexión de cadera con goma arriba</p>
-            <a class="video-btn" href="https://www.youtube.com/shorts/ocA7n8rS9R0" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/ocA7n8rS9R0/hqdefault.jpg" alt="Flexión de cadera con goma arriba">
+          <div class="ex-info">
+            <h3 class="ex-name">Flexión de cadera con goma arriba</h3>
+            <a class="video" href="https://www.youtube.com/shorts/ocA7n8rS9R0" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">12</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">12</span></span>
         </div>
-        <div class="notes"><svg class="icon"><use href="#ic-note"/></svg> Mantener estabilidad de tronco, con activación abdomen y glúteos</div>
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/Rwap0_j5i5A/hqdefault.jpg" alt="Plancha copenaghe palanca corta" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Plancha copenaghe palanca corta</p>
-            <a class="video-btn" href="https://www.youtube.com/shorts/Rwap0_j5i5A" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+        <p class="ex-note"><svg class="icon"><use href="#ic-note"/></svg> Mantener estabilidad de tronco, con activación de abdomen y glúteos.</p>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/Rwap0_j5i5A/hqdefault.jpg" alt="Plancha copenhague palanca corta">
+          <div class="ex-info">
+            <h3 class="ex-name">Plancha copenhague palanca corta</h3>
+            <a class="video" href="https://www.youtube.com/shorts/Rwap0_j5i5A" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">10&#x27;&#x27;/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">10&#x27;&#x27;/lado</span></span>
         </div>
-        
-      </div>
+      </article>
+
     </div>
   </section>
 
-  <section class="block block-p5">
-    <h2 class="block-title">Fuerza general básica</h2>
-    <p class="block-note"><svg class="icon"><use href="#ic-note"/></svg> Aquí utiliza pesos que te permitan mantener la buena técnica del ejercicio (prioridad), solo cuando veas que tienes el ejercicio controlado y lo haces con seguridad y estabilidad, puedes aumentar el peso</p>
-    <div class="exercise-list">
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/57Nw8aKmxWw/hqdefault.jpg" alt="Ejercicios fuerza pie/tobillo con miniband" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Ejercicios fuerza pie/tobillo con miniband</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=57Nw8aKmxWw&amp;t=1s" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+  <!-- BLOQUE 5 -->
+  <section class="block b5">
+    <div class="block-head">
+      <span class="block-num">05</span>
+      <h2 class="block-title">Fuerza general básica</h2>
+    </div>
+    <div class="block-note">
+      <svg class="icon"><use href="#ic-note"/></svg>
+      <span>Aquí utiliza pesos que te permitan mantener la buena técnica del ejercicio (prioridad). Solo cuando veas que tienes el ejercicio controlado y lo haces con seguridad y estabilidad, puedes aumentar el peso.</span>
+    </div>
+    <div class="ex-list">
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/57Nw8aKmxWw/hqdefault.jpg" alt="Ejercicios fuerza pie/tobillo con miniband">
+          <div class="ex-info">
+            <h3 class="ex-name">Ejercicios fuerza pie/tobillo con miniband</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=57Nw8aKmxWw&amp;t=1s" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">12</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">12</span></span>
         </div>
-        <div class="notes"><svg class="icon"><use href="#ic-note"/></svg> Realizar los 4 movimientos: flexion, extension, eversión, inversión</div>
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/JafwPoaFtJY/hqdefault.jpg" alt="Elevaciones de talón uni lateral con peso" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Elevaciones de talón uni lateral con peso</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=JafwPoaFtJY" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+        <p class="ex-note"><svg class="icon"><use href="#ic-note"/></svg> Realizar los 4 movimientos: flexión, extensión, eversión, inversión.</p>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/JafwPoaFtJY/hqdefault.jpg" alt="Elevaciones de talón unilateral con peso">
+          <div class="ex-info">
+            <h3 class="ex-name">Elevaciones de talón unilateral con peso</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=JafwPoaFtJY" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">8/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">8/lado</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/gdMHVZS1w8s/hqdefault.jpg" alt="Wall sit con disco" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Wall sit con disco</p>
-            <a class="video-btn" href="https://www.youtube.com/shorts/gdMHVZS1w8s" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/gdMHVZS1w8s/hqdefault.jpg" alt="Wall sit con disco">
+          <div class="ex-info">
+            <h3 class="ex-name">Wall sit con disco</h3>
+            <a class="video" href="https://www.youtube.com/shorts/gdMHVZS1w8s" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">15&#x27;&#x27;</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">15&#x27;&#x27;</span></span>
         </div>
-        <div class="notes"><svg class="icon"><use href="#ic-note"/></svg> Contrae abdomen con intención de que no haya espacio entre pared y espalda</div>
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/9gglI77Kzq8/hqdefault.jpg" alt="Lunge con mancuernas" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Lunge con mancuernas</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=9gglI77Kzq8" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+        <p class="ex-note"><svg class="icon"><use href="#ic-note"/></svg> Contrae abdomen con la intención de que no haya espacio entre pared y espalda.</p>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/9gglI77Kzq8/hqdefault.jpg" alt="Lunge con mancuernas">
+          <div class="ex-info">
+            <h3 class="ex-name">Lunge con mancuernas</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=9gglI77Kzq8" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">8/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">8/lado</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/S3XkISkekPA/hqdefault.jpg" alt="Press en banco con mancuernas" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Press en banco con mancuernas</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=S3XkISkekPA&amp;t=1s" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/S3XkISkekPA/hqdefault.jpg" alt="Press en banco con mancuernas">
+          <div class="ex-info">
+            <h3 class="ex-name">Press en banco con mancuernas</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=S3XkISkekPA&amp;t=1s" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">10</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">10</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/SnlT4KULYa8/hqdefault.jpg" alt="Jalón polea" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Jalón polea</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=SnlT4KULYa8&amp;t=2s" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/SnlT4KULYa8/hqdefault.jpg" alt="Jalón polea">
+          <div class="ex-info">
+            <h3 class="ex-name">Jalón polea</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=SnlT4KULYa8&amp;t=2s" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">10</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">10</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/wmrJOVg3zY8/hqdefault.jpg" alt="Aperturas desde posición de puente" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Aperturas desde posición de puente</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=wmrJOVg3zY8&amp;t=1s" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/wmrJOVg3zY8/hqdefault.jpg" alt="Aperturas desde posición de puente">
+          <div class="ex-info">
+            <h3 class="ex-name">Aperturas desde posición de puente</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=wmrJOVg3zY8&amp;t=1s" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">10</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">10</span></span>
         </div>
-        
-      </div>
-      <div class="exercise">
-        <div class="exercise-top">
-          <img class="exercise-img" src="https://img.youtube.com/vi/ZRSGpBUVcNw/hqdefault.jpg" alt="Remo unilateral con apoyo en banco" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+'">
-          <div class="exercise-main">
-            <p class="exercise-name">Remo unilateral con apoyo en banco</p>
-            <a class="video-btn" href="https://www.youtube.com/watch?v=ZRSGpBUVcNw" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
+      </article>
+
+      <article class="ex">
+        <div class="ex-head">
+          <img class="ex-img" src="https://img.youtube.com/vi/ZRSGpBUVcNw/hqdefault.jpg" alt="Remo unilateral con apoyo en banco">
+          <div class="ex-info">
+            <h3 class="ex-name">Remo unilateral con apoyo en banco</h3>
+            <a class="video" href="https://www.youtube.com/watch?v=ZRSGpBUVcNw" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#ic-play"/></svg> Vídeo</a>
           </div>
         </div>
-        <div class="metrics">
-          <div class="metric"><span class="metric-label">Series</span><span class="metric-value">2</span></div>
-          <div class="metric"><span class="metric-label">Reps</span><span class="metric-value">8/lado</span></div>
-          <div class="metric"><span class="metric-label">RPE/INT</span><span class="metric-value">–</span></div>
+        <div class="stats">
+          <span class="stat"><span class="stat-k">Series</span><span class="stat-v">2</span></span>
+          <span class="stat"><span class="stat-k">Reps</span><span class="stat-v">8/lado</span></span>
         </div>
-        
-      </div>
+      </article>
+
     </div>
   </section>
+
 </div>
+
+<script>
+  /* Imagen de respaldo si la foto/miniatura no carga (p. ej. falta en ./assets/) */
+  (function(){
+    var FALLBACK = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iI0VFRjBGMyIvPjxwYXRoIGQ9Ik03IDE3bDQtOSAyIDUgMi0zIDIgNyIgc3Ryb2tlPSIjOTdBMEFCIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+";
+    document.querySelectorAll('.ex-img').forEach(function(img){
+      img.addEventListener('error', function(){ if(img.src!==FALLBACK) img.src=FALLBACK; });
+      if(img.complete && img.naturalWidth===0) img.src=FALLBACK;
+    });
+  })();
+</script>
+
 </body>
 </html>
